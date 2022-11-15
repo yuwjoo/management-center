@@ -1,0 +1,62 @@
+// 竖向滚动条
+@mixin f-column-scrollbar($width: 0, $scrollbarThumb: $BASE--TRANSPARENTPARENT, $scrollbarTrack: $BASE--TRANSPARENTPARENT) {
+	&::-webkit-scrollbar{/* 整体样式 */
+		width: $width;
+	}
+	&::-webkit-scrollbar-track{/* 轨道 */
+		background: $scrollbarTrack;
+	}
+	&::-webkit-scrollbar-thumb{/* 滑块 */
+		background: $scrollbarThumb;
+	}
+	&::-webkit-scrollbar-button{/* 两端小方块 */
+
+	}
+	&::-webkit-scrollbar-track-piece{/* 不包含滑块的轨道区 */
+
+	}
+	&::-webkit-scrollbar-corner{/* 两端小方块交汇处 */
+
+	}
+}
+
+// 横向滚动条
+@mixin f-row-scrollbar($height: 0, $scrollbarThumb: $BASE--TRANSPARENTPARENT, $scrollbarTrack: $BASE--TRANSPARENTPARENT) {
+	&::-webkit-scrollbar{/* 整体样式 */
+		height: $height;
+	}
+	&::-webkit-scrollbar-track{/* 轨道 */
+		background: $scrollbarTrack;
+	}
+	&::-webkit-scrollbar-thumb{/* 滑块 */
+		background: $scrollbarThumb;
+	}
+}
+
+// 水平垂直居中对齐
+@mixin f-center {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+// 垂直对齐
+@mixin f-column-center {
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+// 水平对齐
+@mixin f-row-center {
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+}
+
+//图片
+@mixin f-img($type:'cover',$radius:'100%') {
+    border-radius: $radius;
+    object-fit: $type;
+}
