@@ -2,14 +2,15 @@
  * @Description: echarts图表库
  * @Author: YH
  * @Date: 2022-11-14 22:22:02
- * @LastEditTime: 2022-11-14 22:25:32
+ * @LastEditTime: 2022-11-15 21:35:16
  * @LastEditors: YH
  * @Reference: 
  */
+import Vue from 'vue';
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
 import * as echarts from 'echarts/core';
-// 引入柱状图图表，图表后缀都为 Chart
-import { BarChart } from 'echarts/charts';
+// 引入折线图图表，图表后缀都为 Chart
+import { LineChart } from 'echarts/charts';
 // 引入提示框，标题，直角坐标系，数据集，内置数据转换器组件，组件后缀都为 Component
 import {
   TitleComponent,
@@ -30,8 +31,10 @@ echarts.use([
   GridComponent,
   DatasetComponent,
   TransformComponent,
-  BarChart,
+  LineChart,
   LabelLayout,
   UniversalTransition,
   CanvasRenderer
 ]);
+
+Vue.prototype.$echarts = echarts;

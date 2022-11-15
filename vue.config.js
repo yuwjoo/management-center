@@ -2,7 +2,7 @@
  * @Description: vue配置文件
  * @Author: YH
  * @Date: 2022-11-15 09:06:13
- * @LastEditTime: 2022-11-15 16:28:09
+ * @LastEditTime: 2022-11-15 20:35:15
  * @LastEditors: YH
  * @Reference: 
  */
@@ -20,8 +20,10 @@ module.exports = defineConfig({
 		sourceMap: false,
 		loaderOptions: {
 			scss: {
-				additionalData: '@import "~@/assets/css/variable.scss";',
-				additionalData: '@import "~@/assets/css/function.scss";',
+				additionalData: `
+					@import "~@/assets/css/variables.scss";
+					@import "~@/assets/css/functions.scss";
+				`
 			},
 		}
 	},

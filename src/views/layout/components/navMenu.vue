@@ -2,55 +2,67 @@
  * @Description: 菜单导航栏
  * @Author: YH
  * @Date: 2022-11-15 18:01:47
- * @LastEditTime: 2022-11-15 18:02:47
+ * @LastEditTime: 2022-11-15 20:01:20
  * @LastEditors: YH
  * @Reference: 
 -->
-<template>
-  <el-menu
-    default-active="2"
-    class="el-menu-vertical-demo"
-    @open="handleOpen"
-    @close="handleClose"
-  >
-    <el-submenu index="1">
-      <template slot="title">
-        <i class="el-icon-location"></i>
-        <span>导航一</span>
-      </template>
-      <el-menu-item-group>
-        <template slot="title">分组一</template>
-        <el-menu-item index="1-1">选项1</el-menu-item>
-        <el-menu-item index="1-2">选项2</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="分组2">
-        <el-menu-item index="1-3">选项3</el-menu-item>
-      </el-menu-item-group>
-      <el-submenu index="1-4">
-        <template slot="title">选项4</template>
-        <el-menu-item index="1-4-1">选项1</el-menu-item>
-      </el-submenu>
-    </el-submenu>
-    <el-menu-item index="2">
-      <i class="el-icon-menu"></i>
-      <span slot="title">导航二</span>
-    </el-menu-item>
-    <el-menu-item index="3" disabled>
-      <i class="el-icon-document"></i>
-      <span slot="title">导航三</span>
-    </el-menu-item>
-    <el-menu-item index="4">
-      <i class="el-icon-setting"></i>
-      <span slot="title">导航四</span>
-    </el-menu-item>
-  </el-menu>
-</template>
-
 <script>
 export default {
-  methods: {
-    handleOpen() {},
-    handleClose() {},
+  props: {
+    // 是否收起收起菜单
+    isCollapse: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      menuList: [], // 菜单列表
+    };
+  },
+  created() {
+    this.menuList = [
+      { title: "首页", icon: "el-icon-s-home", name: "home" },
+      {
+        title: "图表",
+        icon: "el-icon-pie-chart",
+        name: "charts"
+      },
+    ];
+  },
+  render(h) {
+    // 创建子菜单项
+    const createMenuItem = (menu) => {
+      const childrens = menu.children || [];
+      const titleSlot = (
+        <template slot="title">
+          {menu.icon && <i class={menu.icon}></i>}
+          <span>{menu.title}</span>
+        </template>
+      );
+      return childrens.length ? (
+        <el-submenu index={menu.name || menu.title}>
+          {titleSlot}
+          {childrens.map((children) => createMenuItem(children))}
+        </el-submenu>
+      ) : (
+        <el-menu-item
+          index={menu.name || menu.title}
+          route={{ name: menu.name }}
+        >
+          {titleSlot}
+        </el-menu-item>
+      );
+    };
+    return (
+      <el-menu
+        default-active={this.$route.name}
+        router
+        collapse={this.isCollapse}
+      >
+        {this.menuList.map((menu) => createMenuItem(menu))}
+      </el-menu>
+    );
   },
 };
 </script>
