@@ -1,11 +1,3 @@
-<!--
- * @Description: 页面入口
- * @Author: YH
- * @Date: 2022-11-14 20:41:24
- * @LastEditTime: 2023-05-31 16:24:14
- * @LastEditors: YH
- * @Reference: 
--->
 <template>
   <div id="app">
     <router-view />
