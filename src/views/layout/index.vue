@@ -1,34 +1,33 @@
-<!--
- * @Description: 
- * @Author: YH
- * @Date: 2022-11-14 20:51:19
- * @LastEditTime: 2022-11-15 21:03:31
- * @LastEditors: YH
- * @Reference: 
--->
 <template>
   <el-container class="layout">
-    <el-header class="layout_header"></el-header>
+    <el-aside class="hidden-sm-and-down" width="220px">侧边栏</el-aside>
     <el-container>
-      <el-aside class="layout_aside" width="200px">
-        <com-nav-menu class="layout_aside_navmenu"></com-nav-menu>
-      </el-aside>
-      <el-main class="layout_main">
-        <com-breadcrumb />
-        <router-view id="main" />
+      <el-header class="hidden-md-and-up">
+        <el-button type="primary" @click="showDrawer = true">打开</el-button>
+      </el-header>
+      <el-main>
+        <router-view />
       </el-main>
+      <el-drawer
+        class="hidden-md-and-up"
+        :with-header="false"
+        :show-close="false"
+        :modal="false"
+        :visible.sync="showDrawer"
+        direction="ltr"
+        size="220px"
+      >
+      </el-drawer>
     </el-container>
   </el-container>
 </template>
 
 <script>
-import comNavMenu from "./components/navMenu";
-import comBreadcrumb from "./components/breadcrumb"
-
 export default {
-  components: {
-    comNavMenu,
-    comBreadcrumb
+  data() {
+    return {
+      showDrawer: false, // 显示抽屉
+    };
   },
 };
 </script>
@@ -36,16 +35,9 @@ export default {
 <style lang="scss" scoped>
 .layout {
   height: 100%;
-  .layout_header {
-    background-color: $BASE--PRIMARY;
-    height: $HEADER_HEIGHT !important;
-  }
-  .layout_aside {
-    .layout_aside_navmenu {
-        height: 100%;
-    }
-  }
-  .layout_main {
+
+  .el-aside {
+    background-color: $SIDEBAR_BACKGROUNDCOLOR;
   }
 }
 </style>

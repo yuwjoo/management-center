@@ -2,7 +2,7 @@
  * @Description: 页面入口
  * @Author: YH
  * @Date: 2022-11-14 20:41:24
- * @LastEditTime: 2022-11-15 20:46:57
+ * @LastEditTime: 2023-05-31 16:24:14
  * @LastEditors: YH
  * @Reference: 
 -->
@@ -16,7 +16,8 @@
 #app {
   height: 100%;
   font-size: $FONTSIZE;
-  background-color: $BACKGROUND--BASE;
-  line-height: $LINEHEIGHT--MEDIUM;
+  color: $FONTCOLOR_REGULAR;
+  background-color: $BACKGROUNDCOLOR;
+  line-height: $LINEHEIGHT_MEDIUM;
 }
 </style>

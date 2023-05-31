@@ -1,46 +1,39 @@
-// 基础设置
-$HEADER_HEIGHT: 60px; // 头部高度
+// 侧边栏
+$SIDEBAR_BACKGROUNDCOLOR: #1C1E21; // 背景色
 
 //基础色
-$BASE--PRIMARY: #409EFF; // 主题色
-$BASE--SUCCESS: #67C23A; // 成功
-$BASE--WARNING: #E6A23C; // 警告
-$BASE--DANGER: #F56C6C; // 错误
-$BASE--INFO: #909399; // 信息
-$BASE--BLACK: #000; //黑色
-$BASE--WHITE: #fff; //白色
-$BASE--TRANSPARENTPARENT: transparent; //透明
+$BASE_ACCENT: #0366D6; // 高亮
+$BASE_SUCCESS: #67C23A; // 成功
+$BASE_WARNING: #E6A23C; // 警告
+$BASE_DANGER: #ea5756; // 错误
+$BASE_INFO: #909399; // 信息
+$BASE_BLACK: #000; //黑色
+$BASE_WHITE: #fff; //白色
+$BASE_TRANSPARENTPARENT: transparent; //透明
 
 // 背景色
-$BACKGROUND--BASE: #fff; //基础背景色
-$BACKGROUND--AVTIVE: #fff; // 基础背景色激活
+$BACKGROUNDCOLOR: #222528; //基础背景色
 
-/* 设置字体大小 */
+/* 边框色 */
+$BORDERCOLOR: #2a2c2f; //默认
+
+/* 字体色 */
+$FONTCOLOR_MAIN: #ffffff; //主要文字
+$FONTCOLOR_REGULAR: #fefffe; //常规文字
+$FONTCOLOR_SECONDARY: #d4d4d4; //次要文字
+$FONTCOLOR_PLACEHOLDER: #C0C4CC; //占位文字
+
+/* 字体大小 */
 $FONTSIZE: 14px; // 默认
-$FONTSIZE--0: 12px; //辅助文字
-$FONTSIZE--1: 13px; //正文（小）
-$FONTSIZE--2: 14px; //正文
-$FONTSIZE--3: 16px; //小标题
-$FONTSIZE--4: 18px; //标题
-$FONTSIZE--5: 20px; //主标题
-
-/* 设置字体颜色 */
-$FONTCOLOR: #606266; //默认
-$FONTCOLOR--MAIN: #303133; //主要文字
-$FONTCOLOR--CONVENTIONAL: #606266; //常规文字
-$FONTCOLOR--SECONDARY: #909399; //次要文字
-$FONTCOLOR--PLACEHOLDER: #C0C4CC; //占位文字
-$FONTCOLOR--ACTIVE: #ff711b; //字体选中颜色
+$FONTSIZE_0: 12px; //辅助文字
+$FONTSIZE_1: 13px; //正文（小）
+$FONTSIZE_2: 14px; //正文
+$FONTSIZE_3: 16px; //小标题
+$FONTSIZE_4: 18px; //标题
+$FONTSIZE_5: 20px; //主标题
 
 /* 字体行高 */
-$LINEHEIGHT--NONE: 1; //无行高
-$LINEHEIGHT--MINI: 1.3; //紧凑
-$LINEHEIGHT--MEDIUM: 1.5; //常规
-$LINEHEIGHT--LOOSE: 1.7; //宽松
-
-/* 边框颜色 */
-$BORDERCOLOR: #DCDFE6; //一级边框
-$BORDERCOLOR--0: #DCDFE6; //一级边框
-$BORDERCOLOR--1: #E4E7ED; //二级边框
-$BORDERCOLOR--2: #EBEEF5; //三级边框
-$BORDERCOLOR--3: #F2F6FC; //四级边框
+$LINEHEIGHT_NONE: 1; //无行高
+$LINEHEIGHT_MINI: 1.3; //紧凑
+$LINEHEIGHT_MEDIUM: 1.5; //常规
+$LINEHEIGHT_LOOSE: 1.7; //宽松

@@ -1,11 +1,3 @@
-/*
- * @Description: 入口文件
- * @Author: YH
- * @Date: 2022-11-14 20:41:24
- * @LastEditTime: 2022-11-15 19:50:27
- * @LastEditors: YH
- * @Reference: 
- */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
