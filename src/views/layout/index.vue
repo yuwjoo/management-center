@@ -1,10 +1,8 @@
 <template>
-  <el-container class="layout">
+  <el-container class="layout" direction="horizontal">
     <layout-side :visible.sync="showDrawer" />
-    <el-container>
-      <el-header class="hidden-md-and-up">
-        <el-button type="primary" @click="showDrawer = true">打开</el-button>
-      </el-header>
+    <el-container direction="vertical">
+      <layout-header :is-open="showDrawer" @toggle="showDrawer = !showDrawer" />
       <el-main>
         <router-view />
       </el-main>
@@ -14,15 +12,17 @@
 
 <script>
 import layoutSide from "./components/layoutSide";
+import layoutHeader from "./components/layoutHeader";
 
 export default {
   data() {
     return {
-      showDrawer: false, // 显示抽屉
+      showDrawer: false, // 显示侧边栏抽屉
     };
   },
   components: {
     layoutSide,
+    layoutHeader,
   },
 };
 </script>

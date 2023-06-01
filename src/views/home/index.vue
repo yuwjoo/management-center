@@ -2,12 +2,13 @@
  * @Description: 
  * @Author: YH
  * @Date: 2022-11-14 20:51:14
- * @LastEditTime: 2023-05-31 14:24:51
+ * @LastEditTime: 2023-06-01 11:03:15
  * @LastEditors: YH
  * @Reference: 
 -->
 <template>
     <div class="home">
+        我是主页
     </div>
 </template>
 

@@ -13,9 +13,21 @@ $BASE_TRANSPARENTPARENT: transparent; //透明
 
 // 背景色
 $BACKGROUNDCOLOR: #222528; //基础背景色
+$BACKGROUNDCOLOR_ACTIVE: #d4d4d433; //基础背景色-激活
 
 /* 边框色 */
 $BORDERCOLOR: #2a2c2f; //默认
+$BORDERCOLOR_1: #303337; //一级边框
+$BORDERCOLOR_2: #424549; //二级边框
+
+// 边框圆角
+$BORDERRADIUS_SMALL: 4px; // 小圆角
+$BORDERRADIUS_BIG: 8px; // 大圆角
+$BORDERRADIUS_ROUND: 30px; // 圆形圆角
+
+// 边框宽度
+$BORDERWIDTH: 1px; // 默认
+$BORDERWIDTH_WEIGHT: 3px; // 加粗边框
 
 /* 字体色 */
 $FONTCOLOR_MAIN: #ffffff; //主要文字

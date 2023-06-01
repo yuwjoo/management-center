@@ -1,7 +1,7 @@
 <template>
   <div class="layoutSide">
     <!-- 侧边栏 start -->
-    <el-aside class="hidden-sm-and-down" width="220px">
+    <el-aside class="hidden-sm-and-down" width="100px">
       <side-menu />
     </el-aside>
     <!-- 侧边栏 end -->
@@ -14,10 +14,10 @@
       :modal="false"
       :visible="visible"
       direction="ltr"
-      size="220px"
+      size="100px"
       @update:visible="$emit('update:visible', $event)"
     >
-      <side-menu />
+      <side-menu @click-item="$emit('update:visible', false)" />
     </el-drawer>
     <!-- 抽屉式侧边栏 end -->
   </div>
@@ -60,14 +60,14 @@ export default {
 .layoutSide {
   .el-aside {
     background-color: $SIDEBAR_BACKGROUNDCOLOR;
-    border-right: 1px solid $BORDERCOLOR;
+    border-right: $BORDERWIDTH solid $BORDERCOLOR;
     height: 100%;
   }
 
   .el-drawer__wrapper {
     :deep(.el-drawer.ltr) {
       box-shadow: none;
-      border-right: 1px solid $BORDERCOLOR;
+      border-right: $BORDERWIDTH solid $BORDERCOLOR;
     }
   }
 }

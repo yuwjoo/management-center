@@ -1,11 +1,3 @@
-<!--
- * @Description: 404页面
- * @Author: YH
- * @Date: 2022-11-15 20:01:51
- * @LastEditTime: 2022-11-15 20:11:12
- * @LastEditors: YH
- * @Reference: 
--->
 <template>
   <div class="error">
     <el-empty description="404">
