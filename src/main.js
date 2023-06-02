@@ -7,6 +7,7 @@ import "@/assets/css/class.scss"; // class样式
 import "@/assets/js/interceptorAjax"; // 请求拦截器
 import "@/assets/js/interceptorRouter"; // 路由拦截器
 import "@/library/elementUI"; // element-ui
+import "@/library/svgIcon"; // svg图标组件
 
 Vue.config.productionTip = false;
 

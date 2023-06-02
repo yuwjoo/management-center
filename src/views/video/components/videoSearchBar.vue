@@ -4,7 +4,7 @@
  * @Author: YH
  * @Date: 2023-06-01 11:48:28
  * @LastEditors: YH
- * @LastEditTime: 2023-06-01 17:19:07
+ * @LastEditTime: 2023-06-02 17:50:50
  * @Description: 视频-搜索栏
 -->
 <template>
@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 .videoSearchBar {
-  margin: 10px;
+  padding: 10px 0 20px;
   .videoSearchBar_input {
     :deep(.el-input__inner) {
       height: 35px;
