@@ -3,7 +3,7 @@
     <layout-side :visible.sync="showDrawer" />
     <el-container direction="vertical">
       <layout-header :is-open="showDrawer" @toggle="showDrawer = !showDrawer" />
-      <el-main>
+      <el-main id="main">
         <router-view />
       </el-main>
     </el-container>
@@ -30,5 +30,22 @@ export default {
 <style lang="scss" scoped>
 .layout {
   height: 100%;
+
+  #main {
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: $BACKGROUNDCOLOR;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $BACKGROUNDCOLOR_ACTIVE;
+      border-radius: $BORDERRADIUS_ROUND;
+
+      &:hover {
+        background-color: $FONTCOLOR_PLACEHOLDER;
+      }
+    }
+  }
 }
 </style>

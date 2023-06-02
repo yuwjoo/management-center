@@ -1,51 +1,67 @@
 // 竖向滚动条
 @mixin f-column-scrollbar($width: 0, $scrollbarThumb: $BASE--TRANSPARENTPARENT, $scrollbarTrack: $BASE--TRANSPARENTPARENT) {
-	&::-webkit-scrollbar{/* 整体样式 */
+	&::-webkit-scrollbar {
+		/* 整体样式 */
 		width: $width;
 	}
-	&::-webkit-scrollbar-track{/* 轨道 */
+
+	&::-webkit-scrollbar-track {
+		/* 轨道 */
 		background: $scrollbarTrack;
 	}
-	&::-webkit-scrollbar-thumb{/* 滑块 */
+
+	&::-webkit-scrollbar-thumb {
+		/* 滑块 */
 		background: $scrollbarThumb;
 	}
-	&::-webkit-scrollbar-button{/* 两端小方块 */
+
+	&::-webkit-scrollbar-button {
+		/* 两端小方块 */
 
 	}
-	&::-webkit-scrollbar-track-piece{/* 不包含滑块的轨道区 */
+
+	&::-webkit-scrollbar-track-piece {
+		/* 不包含滑块的轨道区 */
 
 	}
-	&::-webkit-scrollbar-corner{/* 两端小方块交汇处 */
+
+	&::-webkit-scrollbar-corner {
+		/* 两端小方块交汇处 */
 
 	}
 }
 
 // 横向滚动条
 @mixin f-row-scrollbar($height: 0, $scrollbarThumb: $BASE--TRANSPARENTPARENT, $scrollbarTrack: $BASE--TRANSPARENTPARENT) {
-	&::-webkit-scrollbar{/* 整体样式 */
+	&::-webkit-scrollbar {
+		/* 整体样式 */
 		height: $height;
 	}
-	&::-webkit-scrollbar-track{/* 轨道 */
+
+	&::-webkit-scrollbar-track {
+		/* 轨道 */
 		background: $scrollbarTrack;
 	}
-	&::-webkit-scrollbar-thumb{/* 滑块 */
+
+	&::-webkit-scrollbar-thumb {
+		/* 滑块 */
 		background: $scrollbarThumb;
 	}
 }
 
 // 水平垂直居中对齐
 @mixin f-center {
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
 }
 
 // 垂直对齐
 @mixin f-column-center {
-    top: 50%;
-    position: absolute;
-    transform: translateY(-50%);
+	top: 50%;
+	position: absolute;
+	transform: translateY(-50%);
 }
 
 // 水平对齐
@@ -56,7 +72,16 @@
 }
 
 //图片
-@mixin f-img($type:'cover',$radius:'100%') {
-    border-radius: $radius;
-    object-fit: $type;
+@mixin f-img($type: 'cover', $radius: '100%') {
+	border-radius: $radius;
+	object-fit: $type;
+}
+
+// 文本换行省略
+@mixin f-text-wrap($num: 2) {
+	overflow: hidden;
+	-webkit-line-clamp: $num;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
 }

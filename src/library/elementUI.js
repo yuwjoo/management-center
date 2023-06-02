@@ -11,7 +11,8 @@ import {
   Select,
   Option,
   Pagination,
-  Loading
+  Image,
+  Tooltip
 } from "element-ui";
 import "element-ui/lib/theme-chalk/display.css";
 import "@/assets/css/varElementUI.scss";
@@ -29,7 +30,5 @@ Vue.use(Input);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Pagination);
-
-Vue.use(Loading.directive);
-
-Vue.prototype.$loading = Loading.service;
+Vue.use(Image);
+Vue.use(Tooltip);

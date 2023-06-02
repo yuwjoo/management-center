@@ -4,7 +4,7 @@
  * @Author: YH
  * @Date: 2023-06-01 11:48:28
  * @LastEditors: YH
- * @LastEditTime: 2023-06-02 17:50:50
+ * @LastEditTime: 2023-06-02 20:42:51
  * @Description: 视频-搜索栏
 -->
 <template>
@@ -12,9 +12,10 @@
     <el-input
       v-model="searchText"
       class="videoSearchBar_input"
+      type="search"
       placeholder="请输入要搜索的影片"
       clearable
-      @keyup.enter="$emit('search', searchText)"
+      @keyup.enter.native="$emit('search', searchText)"
     >
       <template v-slot:prefix>
         <i class="videoSearchBar_input_icon el-icon-search"></i>
@@ -35,12 +36,26 @@ export default {
 
 <style lang="scss" scoped>
 .videoSearchBar {
-  padding: 10px 0 20px;
+  text-align: center;
+
   .videoSearchBar_input {
+    max-width: 1000px;
+
     :deep(.el-input__inner) {
       height: 35px;
       line-height: 35px;
+      border-color: $FONTCOLOR_PLACEHOLDER;
+
+      &::-webkit-search-cancel-button {
+        display: none;
+      }
+
+      &:hover,
+      &:focus {
+        border-color: $BASE_ACCENT;
+      }
     }
+
     .videoSearchBar_input_icon {
       height: 100%;
       display: flex;

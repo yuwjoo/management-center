@@ -4,7 +4,7 @@
  * @Author: YH
  * @Date: 2023-06-01 11:48:38
  * @LastEditors: YH
- * @LastEditTime: 2023-06-02 17:50:29
+ * @LastEditTime: 2023-06-02 21:49:56
  * @Description: 视频-视频列表
 -->
 <template>
@@ -40,10 +40,10 @@ export default {
   grid-template-columns: repeat(auto-fill, minmax(250px, 350px));
   gap: 20px;
   justify-content: center;
-  padding: 20px 0 10px;
+  margin-bottom: 30px;
 
   .videoList_item {
-    height: 125px;
+    height: 150px;
   }
 }
 </style>

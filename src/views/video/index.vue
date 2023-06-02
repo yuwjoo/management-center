@@ -4,7 +4,7 @@
  * @Author: YH
  * @Date: 2023-06-01 11:42:33
  * @LastEditors: YH
- * @LastEditTime: 2023-06-02 17:53:10
+ * @LastEditTime: 2023-06-02 22:09:23
  * @Description: 视频模块
 -->
 <template>
@@ -15,9 +15,13 @@
 
     <!-- 加载中 start -->
     <div v-show="loading" class="video_loading">
-      <svg-icon icon="loading-bars" size="40px" />
+      <svg-icon icon="loading-bars" size="30px" />
     </div>
     <!-- 加载中 end -->
+
+    <!-- 占位块 start -->
+    <div v-show="!loading" class="video_placeholderBlock"></div>
+    <!-- 占位块 end -->
 
     <!-- 视频列表 start -->
     <video-list :list="list" />
@@ -34,6 +38,7 @@
     <el-pagination
       v-show="list.length !== 0"
       layout="prev, pager, next, jumper"
+      hide-on-single-page
       :current-page.sync="page.current"
       :page-size="page.size"
       :total="page.total"
@@ -56,8 +61,8 @@ export default {
       list: [], // 列表数据
       page: {
         current: 1,
-        size: 10,
-        total: 200,
+        size: 16,
+        total: 0,
       },
     };
   },
@@ -78,12 +83,14 @@ export default {
      */
     getData() {
       this.loading = true;
-      this.list = Array.from({ length: 30 }).map(() => ({
-        title: "海绵宝宝",
-        cover: "http:www.baidu.com",
-        url: "http:www.baidu.com",
-      }));
-      // this.loading = false;
+      setTimeout(() => {
+        const resp = require("./searchData.json");
+        this.list = resp.list;
+        this.$set(this.page, "current", Number(resp.pageNum));
+        this.$set(this.page, "size", resp.pageSize);
+        this.$set(this.page, "total", resp.total);
+        this.loading = false;
+      }, 2000);
     },
     /**
      * @name: 当前页改变
@@ -108,10 +115,23 @@ export default {
     top: 0;
     display: flex;
     justify-content: center;
+    padding: 5px 0;
+    z-index: 99;
+  }
+
+  .video_placeholderBlock {
+    height: 40px;
   }
 
   .el-pagination {
+    padding: 0;
     text-align: right;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 }
 </style>
