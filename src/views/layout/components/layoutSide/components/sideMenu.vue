@@ -11,14 +11,23 @@
       :key="index"
       @click="handleClickItem(item)"
     >
-      <i :class="['sideMenu_item_icon', item.icon]"></i>
+      <el-badge
+        class="sideMenu_item_badge"
+        :value="item.badge"
+        :max="99"
+        :hidden="!item.badge"
+      >
+        <svg-icon class="sideMenu_item_icon" :icon="item.icon" />
+      </el-badge>
       <span class="sideMenu_item_label">{{ item.label }}</span>
     </div>
   </div>
 </template>
 
 <script>
+import SvgIcon from "@/components/SvgIcon.vue";
 export default {
+  components: { SvgIcon },
   data() {
     return {
       list: [],
@@ -34,8 +43,9 @@ export default {
     init() {
       this.list = [
         { icon: "el-icon-house", label: "主页", name: "home" },
-        { icon: "el-icon-video-camera", label: "视频", name: "video" },
+        { icon: "el-icon-video-camera", label: "影视", name: "video" },
         { icon: "el-icon-box", label: "仓库", name: "store" },
+        { icon: "download", label: "下载", name: "download", badge: 100 },
       ];
     },
     /**
@@ -73,6 +83,13 @@ export default {
     &:hover,
     &.is-active {
       background-color: $BACKGROUNDCOLOR_ACTIVE;
+    }
+
+    .sideMenu_item_badge {
+      :deep(.el-badge__content) {
+        top: -3px;
+        right: 8px;
+      }
     }
 
     .sideMenu_item_icon {

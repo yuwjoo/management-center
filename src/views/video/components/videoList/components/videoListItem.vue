@@ -4,7 +4,7 @@
  * @Author: YH
  * @Date: 2023-06-01 17:20:31
  * @LastEditors: YH
- * @LastEditTime: 2023-06-02 23:01:58
+ * @LastEditTime: 2023-06-03 09:22:50
  * @Description: 视频-视频列表-子项
 -->
 <template>
@@ -15,8 +15,12 @@
       :preview-src-list="[item.cover]"
       fit="cover"
     >
-      <div slot="error" class="image-slot">
-        <i class="el-icon-picture-outline"></i>
+      <div slot="error" class="videoListItem_cover_error">
+        <svg-icon
+          class="videoListItem_cover_error_icon"
+          icon="image-error"
+          size="40px"
+        />
       </div>
     </el-image>
     <div class="videoListItem_content">
@@ -30,17 +34,7 @@
         类型：{{ item.tags.join(" / ") }}
       </div>
       <div class="videoListItem_content_options">
-        <el-tooltip
-          content="播放视频"
-          :hide-after="1000"
-          :open-delay="200"
-          :visible-arrow="false"
-          placement="top-start"
-        >
-          <i
-            class="videoListItem_content_options_button el-icon-caret-right"
-          ></i>
-        </el-tooltip>
+        <el-button type="primary">在线播放</el-button>
         <el-tooltip
           content="下载视频"
           :hide-after="1000"
@@ -48,7 +42,9 @@
           :visible-arrow="false"
           placement="top-start"
         >
-          <i class="videoListItem_content_options_button el-icon-download"></i>
+          <i
+            class="videoListItem_content_options_download el-icon-download"
+          ></i>
         </el-tooltip>
       </div>
     </div>
@@ -56,7 +52,9 @@
 </template>
 
 <script>
+import SvgIcon from "@/components/SvgIcon.vue";
 export default {
+  components: { SvgIcon },
   props: {
     item: {
       type: Object,
@@ -83,15 +81,18 @@ export default {
   .videoListItem_cover {
     width: 100px;
     height: 100%;
+    border: $BORDERWIDTH solid $BORDERCOLOR_1;
+    box-sizing: border-box;
 
-    :deep(.image-slot) {
+    :deep(.videoListItem_cover_error) {
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 40px;
-      border: $BORDERWIDTH solid $BORDERCOLOR_1;
-      box-sizing: border-box;
+      background-color: $BACKGROUNDCOLOR;
+
+      .videoListItem_cover_error_icon {
+      }
     }
   }
 
@@ -126,12 +127,10 @@ export default {
       justify-content: flex-end;
       align-items: flex-end;
 
-      .videoListItem_content_options_button {
+      .videoListItem_content_options_download {
         font-size: 20px;
-
-        &:not(:first-child) {
-          margin-left: 20px;
-        }
+        margin-left: 20px;
+        transform: translateY(-4px);
 
         &:hover {
           color: $BASE_ACCENT;

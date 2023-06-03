@@ -4,7 +4,9 @@
     <el-container direction="vertical">
       <layout-header :is-open="showDrawer" @toggle="showDrawer = !showDrawer" />
       <el-main id="main">
-        <router-view />
+        <keep-alive>
+          <router-view />
+        </keep-alive>
       </el-main>
     </el-container>
   </el-container>

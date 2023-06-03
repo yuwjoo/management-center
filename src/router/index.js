@@ -2,7 +2,7 @@
  * @Description:
  * @Author: YH
  * @Date: 2022-11-14 20:41:24
- * @LastEditTime: 2023-06-01 11:43:44
+ * @LastEditTime: 2023-06-03 09:38:37
  * @LastEditors: YH
  * @Reference:
  */
@@ -40,6 +40,14 @@ const routes = [
         component: () => import(/* webpackChunkName: "store" */ "@/views/store"),
         meta: {
           title: "仓库",
+        },
+      },
+      {
+        path: "download",
+        name: "download",
+        component: () => import(/* webpackChunkName: "download" */ "@/views/download"),
+        meta: {
+          title: "下载",
         },
       },
     ],

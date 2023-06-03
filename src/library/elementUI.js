@@ -12,7 +12,9 @@ import {
   Option,
   Pagination,
   Image,
-  Tooltip
+  Tooltip,
+  Progress,
+  Badge
 } from "element-ui";
 import "element-ui/lib/theme-chalk/display.css";
 import "@/assets/css/varElementUI.scss";
@@ -32,3 +34,5 @@ Vue.use(Option);
 Vue.use(Pagination);
 Vue.use(Image);
 Vue.use(Tooltip);
+Vue.use(Progress);
+Vue.use(Badge);
