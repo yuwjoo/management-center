@@ -4,7 +4,7 @@
  * @Author: YH
  * @Date: 2023-06-01 17:20:31
  * @LastEditors: YH
- * @LastEditTime: 2023-06-03 09:22:50
+ * @LastEditTime: 2023-06-05 16:02:00
  * @Description: 视频-视频列表-子项
 -->
 <template>
@@ -34,7 +34,16 @@
         类型：{{ item.tags.join(" / ") }}
       </div>
       <div class="videoListItem_content_options">
-        <el-button type="primary">在线播放</el-button>
+        <el-button
+          type="primary"
+          @click="
+            $router.push({
+              name: 'videoPlay',
+              query: { detailUrl: item.detailUrl },
+            })
+          "
+          >在线播放</el-button
+        >
         <el-tooltip
           content="下载视频"
           :hide-after="1000"

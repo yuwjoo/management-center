@@ -14,7 +14,8 @@ import {
   Image,
   Tooltip,
   Progress,
-  Badge
+  Badge,
+  PageHeader
 } from "element-ui";
 import "element-ui/lib/theme-chalk/display.css";
 import "@/assets/css/varElementUI.scss";
@@ -36,3 +37,4 @@ Vue.use(Image);
 Vue.use(Tooltip);
 Vue.use(Progress);
 Vue.use(Badge);
+Vue.use(PageHeader);

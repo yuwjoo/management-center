@@ -6,6 +6,7 @@
         {
           'is-active': $route.name === item.name,
         },
+        item.className,
       ]"
       v-for="(item, index) in list"
       :key="index"
@@ -45,7 +46,13 @@ export default {
         { icon: "el-icon-house", label: "主页", name: "home" },
         { icon: "el-icon-video-camera", label: "影视", name: "video" },
         { icon: "el-icon-box", label: "仓库", name: "store" },
-        { icon: "download", label: "下载", name: "download", badge: 100 },
+        {
+          icon: "download",
+          label: "下载",
+          name: "download",
+          badge: 100,
+          className: "hidden-sm-and-down",
+        },
       ];
     },
     /**

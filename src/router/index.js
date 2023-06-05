@@ -2,12 +2,13 @@
  * @Description:
  * @Author: YH
  * @Date: 2022-11-14 20:41:24
- * @LastEditTime: 2023-06-03 09:38:37
+ * @LastEditTime: 2023-06-05 17:39:52
  * @LastEditors: YH
  * @Reference:
  */
 import Vue from "vue";
 import VueRouter from "vue-router";
+import modules from "./modules";
 
 Vue.use(VueRouter);
 
@@ -17,40 +18,7 @@ const routes = [
     name: "layout",
     component: () => import("@/views/layout"),
     redirect: { name: "home" },
-    children: [
-      {
-        path: "home",
-        name: "home",
-        component: () => import(/* webpackChunkName: "home" */ "@/views/home"),
-        meta: {
-          title: "首页",
-        },
-      },
-      {
-        path: "video",
-        name: "video",
-        component: () => import(/* webpackChunkName: "video" */ "@/views/video"),
-        meta: {
-          title: "视频",
-        },
-      },
-      {
-        path: "store",
-        name: "store",
-        component: () => import(/* webpackChunkName: "store" */ "@/views/store"),
-        meta: {
-          title: "仓库",
-        },
-      },
-      {
-        path: "download",
-        name: "download",
-        component: () => import(/* webpackChunkName: "download" */ "@/views/download"),
-        meta: {
-          title: "下载",
-        },
-      },
-    ],
+    children: modules,
   },
   {
     path: "*",
