@@ -1,30 +1,24 @@
 <!--
  * @FileName: 
- * @FilePath: \management-center\src\views\video\index.vue
+ * @FilePath: \management-center\src\views\filmVideo\index.vue
  * @Author: YH
  * @Date: 2023-06-01 11:42:33
  * @LastEditors: YH
- * @LastEditTime: 2023-06-02 22:09:23
+ * @LastEditTime: 2023-06-06 15:48:40
  * @Description: 视频模块
 -->
 <template>
-  <div class="video">
+  <div class="filmVideo">
     <!-- 搜索栏 start -->
-    <video-search-bar @search="handleSearch" />
+    <film-video-search-bar @search="handleSearch" />
     <!-- 搜索栏 end -->
 
     <!-- 加载中 start -->
-    <div v-show="loading" class="video_loading">
-      <svg-icon icon="loading-bars" size="30px" />
-    </div>
+    <com-loading :show="loading" />
     <!-- 加载中 end -->
 
-    <!-- 占位块 start -->
-    <div v-show="!loading" class="video_placeholderBlock"></div>
-    <!-- 占位块 end -->
-
     <!-- 视频列表 start -->
-    <video-list :list="list" />
+    <film-video-list :list="list" />
     <!-- 视频列表 end -->
 
     <!-- 空状态 start -->
@@ -50,10 +44,12 @@
 </template>
 
 <script>
-import videoSearchBar from "./components/videoSearchBar";
-import videoList from "./components/videoList";
+import comLoading from "@/components/Loading";
+import filmVideoSearchBar from "./components/filmVideoSearchBar";
+import filmVideoList from "./components/filmVideoList";
 
 export default {
+  name: "filmVideo",
   data() {
     return {
       searchText: "", // 模糊搜索值
@@ -102,27 +98,15 @@ export default {
     },
   },
   components: {
-    videoSearchBar,
-    videoList,
+    comLoading,
+    filmVideoSearchBar,
+    filmVideoList,
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.video {
-  .video_loading {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    padding: 5px 0;
-    z-index: 99;
-  }
-
-  .video_placeholderBlock {
-    height: 40px;
-  }
-
+.filmVideo {
   .el-pagination {
     padding: 0;
     text-align: right;

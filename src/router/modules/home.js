@@ -4,5 +4,6 @@ export default {
   component: () => import(/* webpackChunkName: "home" */ "@/views/home"),
   meta: {
     title: "首页",
+    keepAlive: true
   },
 };

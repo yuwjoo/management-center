@@ -1,44 +1,44 @@
 <!--
  * @FileName: 
- * @FilePath: \management-center\src\views\video\components\videoList\components\videoListItem.vue
+ * @FilePath: \management-center\src\views\filmVideo\components\filmVideoList\components\filmVideoListItem.vue
  * @Author: YH
  * @Date: 2023-06-01 17:20:31
  * @LastEditors: YH
- * @LastEditTime: 2023-06-05 16:02:00
+ * @LastEditTime: 2023-06-06 15:44:26
  * @Description: 视频-视频列表-子项
 -->
 <template>
-  <div class="videoListItem">
+  <div class="filmVideoListItem">
     <el-image
-      class="videoListItem_cover"
+      class="filmVideoListItem_cover"
       :src="item.cover"
       :preview-src-list="[item.cover]"
       fit="cover"
     >
-      <div slot="error" class="videoListItem_cover_error">
+      <div slot="error" class="filmVideoListItem_cover_error">
         <svg-icon
-          class="videoListItem_cover_error_icon"
+          class="filmVideoListItem_cover_error_icon"
           icon="image-error"
           size="40px"
         />
       </div>
     </el-image>
-    <div class="videoListItem_content">
-      <div class="videoListItem_content_title">
+    <div class="filmVideoListItem_content">
+      <div class="filmVideoListItem_content_title">
         {{ item.title }}
       </div>
-      <div class="videoListItem_content_item videoListItem_content_release">
+      <div class="filmVideoListItem_content_item filmVideoListItem_content_release">
         上映：{{ item.releaseTime }} / {{ item.country }}
       </div>
-      <div class="videoListItem_content_item videoListItem_content_type">
+      <div class="filmVideoListItem_content_item filmVideoListItem_content_type">
         类型：{{ item.tags.join(" / ") }}
       </div>
-      <div class="videoListItem_content_options">
+      <div class="filmVideoListItem_content_options">
         <el-button
           type="primary"
           @click="
             $router.push({
-              name: 'videoPlay',
+              name: 'filmVideoPlay',
               query: { detailUrl: item.detailUrl },
             })
           "
@@ -52,7 +52,7 @@
           placement="top-start"
         >
           <i
-            class="videoListItem_content_options_download el-icon-download"
+            class="filmVideoListItem_content_options_download el-icon-download"
           ></i>
         </el-tooltip>
       </div>
@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.videoListItem {
+.filmVideoListItem {
   border: $BORDERWIDTH solid $BORDERCOLOR_1;
   border-radius: $BORDERRADIUS_SMALL;
   background-color: $BACKGROUNDCOLOR_LIGHT;
@@ -87,56 +87,53 @@ export default {
     border-color: $BASE_ACCENT;
   }
 
-  .videoListItem_cover {
+  .filmVideoListItem_cover {
     width: 100px;
     height: 100%;
     border: $BORDERWIDTH solid $BORDERCOLOR_1;
     box-sizing: border-box;
 
-    :deep(.videoListItem_cover_error) {
+    :deep(.filmVideoListItem_cover_error) {
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: $BACKGROUNDCOLOR;
-
-      .videoListItem_cover_error_icon {
-      }
     }
   }
 
-  .videoListItem_content {
+  .filmVideoListItem_content {
     margin-left: 10px;
     flex: 1;
     display: flex;
     flex-direction: column;
 
-    .videoListItem_content_title {
+    .filmVideoListItem_content_title {
       font-size: $FONTSIZE_3;
       margin-bottom: 10px;
       color: $FONTCOLOR_MAIN;
     }
 
-    .videoListItem_content_item {
+    .filmVideoListItem_content_item {
       font-size: $FONTSIZE_1;
       color: $FONTCOLOR_SECONDARY;
 
-      &.videoListItem_content_release {
+      &.filmVideoListItem_content_release {
         @include f-text-wrap(1);
       }
 
-      &.videoListItem_content_type {
+      &.filmVideoListItem_content_type {
         @include f-text-wrap(2);
       }
     }
 
-    .videoListItem_content_options {
+    .filmVideoListItem_content_options {
       flex: 1;
       display: flex;
       justify-content: flex-end;
       align-items: flex-end;
 
-      .videoListItem_content_options_download {
+      .filmVideoListItem_content_options_download {
         font-size: 20px;
         margin-left: 20px;
         transform: translateY(-4px);

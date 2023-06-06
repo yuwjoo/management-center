@@ -1,3 +1,5 @@
+import store from "@/store";
+
 const modules = require.context("./", false, /\.js$/);
 const routerList = modules
   .keys()
@@ -19,5 +21,7 @@ const handlerFlatRouter = (arr, parent) => {
   });
   return list;
 };
+const routes = handlerFlatRouter(routerList, null);
+store.commit("router/setRoutes", routes);
 
-export default handlerFlatRouter(routerList, null);
+export default routes;

@@ -4,7 +4,8 @@
     <el-container direction="vertical">
       <layout-header :is-open="showDrawer" @toggle="showDrawer = !showDrawer" />
       <el-main id="main">
-        <keep-alive>
+        <layout-page-header />
+        <keep-alive :include="keepAliveWhiteList">
           <router-view />
         </keep-alive>
       </el-main>
@@ -13,8 +14,10 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import layoutSide from "./components/layoutSide";
 import layoutHeader from "./components/layoutHeader";
+import layoutPageHeader from "./components/layoutPageHeader";
 
 export default {
   data() {
@@ -22,9 +25,13 @@ export default {
       showDrawer: false, // 显示侧边栏抽屉
     };
   },
+  computed: {
+    ...mapGetters("router", ["keepAliveWhiteList"]),
+  },
   components: {
     layoutSide,
     layoutHeader,
+    layoutPageHeader,
   },
 };
 </script>

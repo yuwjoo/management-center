@@ -44,7 +44,7 @@ export default {
     init() {
       this.list = [
         { icon: "el-icon-house", label: "主页", name: "home" },
-        { icon: "el-icon-video-camera", label: "影视", name: "video" },
+        { icon: "el-icon-video-camera", label: "影视", name: "filmVideo" },
         { icon: "el-icon-box", label: "仓库", name: "store" },
         {
           icon: "download",

@@ -15,7 +15,9 @@ import {
   Tooltip,
   Progress,
   Badge,
-  PageHeader
+  PageHeader,
+  Tabs,
+  TabPane,
 } from "element-ui";
 import "element-ui/lib/theme-chalk/display.css";
 import "@/assets/css/varElementUI.scss";
@@ -38,3 +40,5 @@ Vue.use(Tooltip);
 Vue.use(Progress);
 Vue.use(Badge);
 Vue.use(PageHeader);
+Vue.use(Tabs);
+Vue.use(TabPane);

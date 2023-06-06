@@ -5,6 +5,7 @@ export default {
     import(/* webpackChunkName: "download" */ "@/views/download"),
   meta: {
     title: "下载",
+    keepAlive: true
   },
   children: [
     {
@@ -15,6 +16,7 @@ export default {
       meta: {
         title: "下载",
         childPage: true,
+        keepAlive: true
       },
     },
   ],

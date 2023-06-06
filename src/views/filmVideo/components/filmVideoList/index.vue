@@ -1,16 +1,16 @@
 <!--
  * @FileName: 
- * @FilePath: \management-center\src\views\video\components\videoList\index.vue
+ * @FilePath: \management-center\src\views\filmVideo\components\filmVideoList\index.vue
  * @Author: YH
  * @Date: 2023-06-01 11:48:38
  * @LastEditors: YH
- * @LastEditTime: 2023-06-02 21:49:56
+ * @LastEditTime: 2023-06-06 15:43:41
  * @Description: 视频-视频列表
 -->
 <template>
-  <div class="videoList">
-    <video-list-item
-      class="videoList_item"
+  <div class="filmVideoList">
+    <film-video-list-item
+      class="filmVideoList_item"
       v-for="(item, index) in list"
       :key="index"
       :item="item"
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import videoListItem from "./components/videoListItem";
+import filmVideoListItem from "./components/filmVideoListItem";
 
 export default {
   props: {
@@ -29,20 +29,20 @@ export default {
     },
   },
   components: {
-    videoListItem,
+    filmVideoListItem,
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.videoList {
+.filmVideoList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 350px));
   gap: 20px;
   justify-content: center;
   margin-bottom: 30px;
 
-  .videoList_item {
+  .filmVideoList_item {
     height: 150px;
   }
 }

@@ -4,5 +4,6 @@ export default {
   component: () => import(/* webpackChunkName: "store" */ "@/views/store"),
   meta: {
     title: "仓库",
+    keepAlive: true
   },
 };
