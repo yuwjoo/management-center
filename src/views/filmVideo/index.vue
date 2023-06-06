@@ -4,7 +4,7 @@
  * @Author: YH
  * @Date: 2023-06-01 11:42:33
  * @LastEditors: YH
- * @LastEditTime: 2023-06-06 15:48:40
+ * @LastEditTime: 2023-06-06 22:15:33
  * @Description: 视频模块
 -->
 <template>
@@ -47,6 +47,7 @@
 import comLoading from "@/components/Loading";
 import filmVideoSearchBar from "./components/filmVideoSearchBar";
 import filmVideoList from "./components/filmVideoList";
+import { searchFilmVideo } from "@/api/filmVideo";
 
 export default {
   name: "filmVideo",
@@ -79,14 +80,19 @@ export default {
      */
     getData() {
       this.loading = true;
-      setTimeout(() => {
-        const resp = require("./searchData.json");
-        this.list = resp.list;
-        this.$set(this.page, "current", Number(resp.pageNum));
-        this.$set(this.page, "size", resp.pageSize);
-        this.$set(this.page, "total", resp.total);
-        this.loading = false;
-      }, 2000);
+      searchFilmVideo({
+        keywords: this.searchText,
+        pageNum: this.page.current,
+      })
+        .then((res) => {
+          this.list = res.list || [];
+          this.$set(this.page, "current", Number(res.pageNum));
+          this.$set(this.page, "size", res.pageSize);
+          this.$set(this.page, "total", res.total);
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     },
     /**
      * @name: 当前页改变

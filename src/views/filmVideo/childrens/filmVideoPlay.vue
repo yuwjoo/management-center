@@ -11,20 +11,26 @@
     <!-- 播放器 end -->
 
     <div class="filmVideoPlay_content">
-      <el-tabs class="filmVideoPlay_content_tab">
+      <el-tabs v-model="activeLineRoute" class="filmVideoPlay_content_tab">
         <el-tab-pane
           v-for="(item, index) in lineRouteList"
           class="filmVideoPlay_content_tab_pane"
           :key="index"
-          :label="item.label"
-          :name="item.label"
+          :label="item.lineName"
+          :name="item.lineName"
         >
           <div
-            v-for="(blockItem, blockIndex) in item.list"
+            v-for="(blockItem, blockIndex) in item.playList"
             :key="blockIndex"
-            class="filmVideoPlay_content_tab_pane_block"
+            :class="[
+              'filmVideoPlay_content_tab_pane_block',
+              {
+                'is-active': activePlayBlock === blockItem.url,
+              },
+            ]"
+            @click="handleClickPlayBlock(blockItem)"
           >
-            {{ blockItem.label }}
+            {{ blockItem.title }}
           </div>
         </el-tab-pane>
       </el-tabs>
@@ -35,22 +41,26 @@
 <script>
 import comLoading from "@/components/Loading";
 import { usePlayer } from "@/library/xgplayer";
+import { getDetailInfo, getVideoUrl } from "@/api/filmVideo";
 
 export default {
   name: "filmVideoPlay",
   beforeRouteEnter(to, from, next) {
-    to.meta.title = "海绵宝宝";
+    to.meta.title = to.query.title;
     next();
   },
   data() {
     return {
-      loading: true, // 加载中
+      loading: false, // 加载中
       lineRouteList: [], // 线路列表
+      data: {}, // 详情数据
+      activeLineRoute: "", // 当前选中的线路
+      activePlayBlock: "", // 当前播放地址
+      videoUrl: "", // 视频真实地址
     };
   },
   mounted() {
-    this.init();
-    screen.orientation.lock();
+    this.getData();
     screen.orientation.addEventListener("change", this.handleOrientationChange);
   },
   beforeDestroy() {
@@ -64,40 +74,39 @@ export default {
      * @name: 初始化
      */
     init() {
-      setTimeout(() => {
-        this.player = usePlayer({
-          id: "player",
-          url: "http://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-720p.mp4",
-          fluid: true,
-          // poster: "https://i.ytimg.com/vi/lK2ZbbQSHww/hqdefault.jpg",
-          videoInit: true,
-          download: true,
+      this.player = usePlayer({
+        id: "player",
+        url:
+          this.videoUrl ||
+          "https://vip.ffzy-play7.com/20230115/11530_93d1a732/index.m3u8",
+        fluid: true,
+        videoInit: true,
+      });
+    },
+    /**
+     * @name: 获取数据
+     */
+    async getData() {
+      this.loading = true;
+      try {
+        const data = await getDetailInfo({
+          detailUrl: this.$route.query.detailUrl,
         });
-      }, 2000);
-      this.lineRouteList = [
-        {
-          label: "youTube",
-          list: [
-            { label: "蓝光", url: "www.baidu.com" },
-            { label: "标准", url: "www.baidu.com" },
-            { label: "高清", url: "www.baidu.com" },
-          ],
-        },
-        {
-          label: "优酷",
-          list: [
-            { label: "标准", url: "www.baidu.com" },
-            { label: "高清", url: "www.baidu.com" },
-          ],
-        },
-        {
-          label: "土豆",
-          list: [
-            { label: "标准", url: "www.baidu.com" },
-            { label: "超清", url: "www.baidu.com" },
-          ],
-        },
-      ];
+        this.data = data;
+        this.lineRouteList = data.playLineList;
+        this.activeLineRoute = data.playLineList[0].lineName;
+        this.activePlayBlock = data.playLineList[0].playList[0].url;
+        await this.getVideoUrl();
+        this.init();
+      } catch (err) {}
+      this.loading = false;
+    },
+    /**
+     * @name: 获取真实视频地址
+     */
+    async getVideoUrl() {
+      const { url } = await getVideoUrl({ playUrl: this.activePlayBlock });
+      this.videoUrl = url;
     },
     /**
      * @name: 处理屏幕方向改变
@@ -108,6 +117,21 @@ export default {
       } else {
         this.player.exitFullscreen(this.player.root);
       }
+    },
+    /**
+     * @name: 处理点击播放线路块
+     * @param {object} item 播放线路信息
+     */
+    handleClickPlayBlock(item) {
+      this.activePlayBlock = item.url;
+      this.loading = true;
+      this.getVideoUrl()
+        .then(() => {
+          this.player.src = this.videoUrl;
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     },
   },
   components: {
@@ -142,6 +166,10 @@ export default {
           margin: 0 6px;
           border: $BORDERWIDTH solid $BORDERCOLOR_2;
           border-radius: $BORDERRADIUS_SMALL;
+
+          &.is-active {
+            background-color: $BACKGROUNDCOLOR_ACTIVE;
+          }
         }
       }
     }

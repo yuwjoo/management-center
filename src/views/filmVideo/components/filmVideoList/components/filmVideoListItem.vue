@@ -4,7 +4,7 @@
  * @Author: YH
  * @Date: 2023-06-01 17:20:31
  * @LastEditors: YH
- * @LastEditTime: 2023-06-06 15:44:26
+ * @LastEditTime: 2023-06-06 22:15:59
  * @Description: 视频-视频列表-子项
 -->
 <template>
@@ -27,10 +27,14 @@
       <div class="filmVideoListItem_content_title">
         {{ item.title }}
       </div>
-      <div class="filmVideoListItem_content_item filmVideoListItem_content_release">
+      <div
+        class="filmVideoListItem_content_item filmVideoListItem_content_release"
+      >
         上映：{{ item.releaseTime }} / {{ item.country }}
       </div>
-      <div class="filmVideoListItem_content_item filmVideoListItem_content_type">
+      <div
+        class="filmVideoListItem_content_item filmVideoListItem_content_type"
+      >
         类型：{{ item.tags.join(" / ") }}
       </div>
       <div class="filmVideoListItem_content_options">
@@ -39,7 +43,7 @@
           @click="
             $router.push({
               name: 'filmVideoPlay',
-              query: { detailUrl: item.detailUrl },
+              query: { detailUrl: item.detailUrl, title: item.title },
             })
           "
           >在线播放</el-button
