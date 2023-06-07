@@ -2,14 +2,14 @@
  * @Description: axios拦截器
  * @Author: YH
  * @Date: 2022-11-14 22:01:54
- * @LastEditTime: 2023-06-06 22:58:28
+ * @LastEditTime: 2023-06-07 09:31:59
  * @LastEditors: YH
  * @Reference:
  */
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://192.168.10.103:7070",
+  baseURL: "http://192.168.1.32:7070",
 });
 
 // 添加请求拦截器

@@ -160,10 +160,15 @@ export default {
       .filmVideoPlay_content_tab_pane {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
 
         .filmVideoPlay_content_tab_pane_block {
-          padding: 3px 10px;
-          margin: 0 6px;
+          flex-shrink: 0;
+          width: calc(25% - 12px);
+          box-sizing: border-box;
+          padding: 6px 10px;
+          margin: 6px 6px 0;
+          text-align: center;
           border: $BORDERWIDTH solid $BORDERCOLOR_2;
           border-radius: $BORDERRADIUS_SMALL;
 
