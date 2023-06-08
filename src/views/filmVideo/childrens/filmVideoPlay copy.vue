@@ -5,7 +5,9 @@
     <!-- 加载状态 end -->
 
     <!-- 播放器 start -->
-    <com-player :url="videoUrl" />
+    <div class="filmVideoPlay_video">
+      <div id="player"></div>
+    </div>
     <!-- 播放器 end -->
 
     <div class="filmVideoPlay_content">
@@ -38,7 +40,7 @@
 
 <script>
 import comLoading from "@/components/Loading";
-import comPlayer from "@/components/Player";
+import { usePlayer } from "@/library/xgplayer";
 import { getDetailInfo, getVideoUrl } from "@/api/filmVideo";
 
 export default {
@@ -95,6 +97,7 @@ export default {
         this.activeLineRoute = data.playLineList[0].lineName;
         this.activePlayBlock = data.playLineList[0].playList[0].url;
         await this.getVideoUrl();
+        this.init();
       } catch (err) {}
       this.loading = false;
     },
@@ -124,7 +127,7 @@ export default {
       this.loading = true;
       this.getVideoUrl()
         .then(() => {
-          // this.player.src = this.videoUrl;
+          this.player.src = this.videoUrl;
         })
         .finally(() => {
           this.loading = false;
@@ -133,7 +136,6 @@ export default {
   },
   components: {
     comLoading,
-    comPlayer
   },
 };
 </script>

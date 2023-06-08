@@ -32,14 +32,39 @@ export default {
       player: null, // 播放器实例
     };
   },
+  watch: {
+    url(val, oldVal) {
+      console.log("url改变", val, this.getSuffix(val));
+      if (this.player?.config?.url === val) {
+        return;
+      }
+      if (this.player && this.getSuffix(val) === this.getSuffix(oldVal)) {
+        this.player.src = val;
+        this.player.replay();
+      } else {
+        this.init();
+      }
+    },
+    poster(val) {
+      if (this.player) {
+        this.player.poster = val;
+      }
+    },
+    options() {
+      this.init();
+    },
+  },
   mounted() {
-    this.init();
+    // this.init();
   },
   methods: {
     /**
      * @name: 初始化
      */
     init() {
+      console.log(this.player)
+      if (this.player) this.player.destroy();
+      const suffix = this.getSuffix(this.url);
       const player = new Player({
         el: this.$refs.box,
         url: this.url,
@@ -51,6 +76,14 @@ export default {
       });
       this.player = player;
       this.$emit("player", player);
+    },
+    /**
+     * @name: 获取url后缀名
+     * @param {string} url 视频地址
+     * @return {string} 后缀名
+     */
+    getSuffix(url = "") {
+      return (url.match(/(?<=\.)[^\.]*$/) || [""])[0].split("?")[0].toLocaleLowerCase();
     },
   },
 };
